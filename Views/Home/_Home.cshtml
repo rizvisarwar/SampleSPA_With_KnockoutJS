@@ -1,0 +1,54 @@
+﻿<!-- ko with: home -->
+<div class="jumbotron">
+    <h1>Single Page Application (SPA)</h1>
+    <p class="lead">Single-Page Applications (SPAs) are Web apps that load a single HTML page and dynamically update that page as the user interacts with the app. SPAs use AJAX and HTML5 to create fluid and responsive Web apps, without constant page reloads.<br>
+            In this application I have demonstrarted how to implement a SPA with Knockout JS.</p>
+    <p><a href="https://en.wikipedia.org/wiki/Single-page_application" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <h2>Movie information</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Genre</th>
+                    <th>Like</th>
+                    <th>Dislike</th>
+                </tr>
+            </thead>
+            <!-- Todo: Generate table body -->
+            <tbody data-bind="foreach: movies">
+                <tr>
+                    <td data-bind="text: title"></td>
+                    <td data-bind="text: year"></td>
+                    <td data-bind="text: genre"></td>
+                    <td data-bind="text: like"></td>
+                    <td data-bind="text: dislike"></td>
+                    <td><input data-bind="value: title" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <div class="col-md-4">
+            <h2>Add New Movie</h2>
+            <div class="form-group">
+                <label for="newTitle">Title:</label>
+                <input type="text" class="form-control" id="newTitle" data-bind="value: newTitle">
+            </div>
+            <div class="form-group">
+                <label for="newYear">Year:</label>
+                <input type="text" class="form-control" id="newYear" data-bind="value: newYear">
+            </div>
+            <div class="form-group">
+                <label for="newGenre">Genre:</label>
+                <input type="text" class="form-control" id="newGenre" data-bind="value: newGenre">
+            </div>
+                        
+            <button data-bind="click: saveMovie">Save</button>
+        </div>
+</div>
+
+<!-- /ko -->

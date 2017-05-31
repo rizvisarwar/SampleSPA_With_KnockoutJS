@@ -4,6 +4,7 @@
     this.like = ko.observable(data.like);
     this.dislike = ko.observable(data.dislike);
     this.genre = ko.observable(data.genre);
+    this.id = ko.observable(data.id);
 }
 
 function MovieViewModel(app, dataModel) {
@@ -13,6 +14,8 @@ function MovieViewModel(app, dataModel) {
     self.title = ko.observable("");
     self.year = ko.observable("");
     self.genre = ko.observable("");
+    self.like = ko.observable();
+    self.dislike = ko.observable();
     self.newTitle = ko.observable("");
     self.newYear = ko.observable("");
     self.newGenre = ko.observable("");
@@ -51,7 +54,34 @@ function MovieViewModel(app, dataModel) {
         });
     };
 
- 
+    self.likeMovie = function (item) {
+        item.like(item.like() + 1);
+        var model = { 'ID': item.id(), 'Title': item.title(), 'Year': item.year(), 'Genre': item.genre(), 'Like': item.like(), 'Dislike': item.dislike() };
+
+        $.ajax({
+            method: 'PUT',
+            url: '/api/Movies/' + item.id(),
+            data: JSON.stringify(model),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+               //do something
+            }
+        });
+    };
+    this.dislikeMovie = function (item) {
+        item.dislike(item.dislike() + 1); 
+        var model = { 'ID': item.id(), 'Title': item.title(), 'Year': item.year(), 'Genre': item.genre(), 'Like': item.like(), 'Dislike': item.dislike() };
+
+        $.ajax({
+            method: 'PUT',
+            url: '/api/Movies/' + item.id(),
+            data: JSON.stringify(model),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                //do something
+            }
+        });
+    };
 
     return self;
 }

@@ -27,9 +27,12 @@
                     <td data-bind="text: like"></td>
                     <td data-bind="text: dislike"></td>
                     <td><input data-bind="value: title" /></td>
+                    <td><button class="btn btn-success" data-bind="click: $parent.likeMovie">Like</button></td>
+                    <td><button class="btn btn-danger" data-bind="click: $parent.dislikeMovie">Dislike</button></td>
                 </tr>
             </tbody>
         </table>
+
     </div>
 
         <div class="col-md-4">
